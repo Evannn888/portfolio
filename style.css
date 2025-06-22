@@ -139,6 +139,15 @@ body.dark-mode .footer {
     color: #b0b0b0;
 }
 
+body.dark-mode .nav-list {
+    background-color: rgba(24, 26, 27, 0.95);
+    backdrop-filter: blur(10px);
+}
+
+body.dark-mode .hamburger span {
+    background-color: #f1f1f1;
+}
+
 .container {
     max-width: 1200px;
     margin: 0 auto;
@@ -174,10 +183,18 @@ body.dark-mode .footer {
     background-clip: text;
 }
 
+.nav {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
 .nav-list {
     display: flex;
     list-style: none;
     gap: 2rem;
+    margin: 0;
+    padding: 0;
 }
 
 .nav-link {
@@ -742,6 +759,11 @@ section {
         margin: 0.5rem 0;
     }
 
+    .dark-mode-toggle {
+        order: -1;
+        margin-right: 1rem;
+    }
+
     .hero-content {
         grid-template-columns: 1fr;
         gap: 2rem;
@@ -850,17 +872,29 @@ section {
     background: none;
     border: none;
     color: #007bff;
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     cursor: pointer;
-    margin-left: 1.5rem;
-    transition: color 0.3s;
+    padding: 0.5rem;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
 }
+
 .dark-mode-toggle:hover {
-    color: #232526;
+    background-color: rgba(0, 123, 255, 0.1);
+    color: #0056b3;
+    transform: scale(1.1);
 }
+
 body.dark-mode .dark-mode-toggle {
     color: #66aaff;
 }
+
 body.dark-mode .dark-mode-toggle:hover {
+    background-color: rgba(102, 170, 255, 0.1);
     color: #f1f1f1;
 } 

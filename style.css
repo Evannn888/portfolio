@@ -16,6 +16,129 @@ body {
     background-color: #ffffff;
 }
 
+body.dark-mode {
+    background-color: #181a1b;
+    color: #f1f1f1;
+}
+
+body.dark-mode .header {
+    background-color: rgba(24, 26, 27, 0.95);
+    box-shadow: 0 2px 20px rgba(0,0,0,0.4);
+}
+
+body.dark-mode .logo h2 {
+    color: #66aaff;
+    background: linear-gradient(135deg, #66aaff, #3a6ea5);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+body.dark-mode .nav-link {
+    color: #f1f1f1;
+}
+body.dark-mode .nav-link:hover {
+    color: #66aaff;
+}
+body.dark-mode .nav-link::after {
+    background-color: #66aaff;
+}
+
+body.dark-mode .cta-button.primary {
+    background-color: #222;
+    color: #66aaff;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+body.dark-mode .cta-button.secondary {
+    background-color: transparent;
+    color: #f1f1f1;
+    border: 2px solid #f1f1f1;
+}
+body.dark-mode .cta-button.secondary:hover {
+    background-color: #222;
+    color: #66aaff;
+}
+
+body.dark-mode .hero {
+    background: linear-gradient(135deg, #232526 0%, #414345 100%);
+    color: #f1f1f1;
+}
+body.dark-mode .hero-avatar {
+    background: rgba(255,255,255,0.05);
+    color: #66aaff;
+    border: 2px solid rgba(102,170,255,0.2);
+}
+
+body.dark-mode .about {
+    background-color: #232526;
+}
+body.dark-mode .about-stats .stat-item {
+    background: #181a1b;
+    color: #f1f1f1;
+}
+body.dark-mode .stat-label {
+    color: #b0b0b0;
+}
+
+body.dark-mode .experience {
+    background-color: #181a1b;
+}
+body.dark-mode .experience-card {
+    background-color: #232526;
+    border-left: 4px solid #66aaff;
+}
+body.dark-mode .experience-icon {
+    background: linear-gradient(135deg, #66aaff, #3a6ea5);
+    color: #181a1b;
+}
+
+body.dark-mode .projects {
+    background-color: #232526;
+}
+body.dark-mode .project-card {
+    background-color: #181a1b;
+}
+body.dark-mode .project-header .project-icon {
+    background: linear-gradient(135deg, #66aaff, #3a6ea5);
+    color: #181a1b;
+}
+body.dark-mode .tech-tag {
+    background-color: #232526;
+    color: #b0b0b0;
+}
+
+body.dark-mode .skills {
+    background-color: #181a1b;
+}
+body.dark-mode .skill-category {
+    background-color: #232526;
+}
+body.dark-mode .skill-tag {
+    background-color: #66aaff;
+    color: #181a1b;
+}
+
+body.dark-mode .contact {
+    background-color: #232526;
+}
+body.dark-mode .contact-info,
+body.dark-mode .contact-details,
+body.dark-mode .contact-item {
+    color: #f1f1f1;
+}
+body.dark-mode .social-link {
+    background-color: #181a1b;
+    color: #f1f1f1;
+}
+body.dark-mode .social-link:hover {
+    color: #66aaff;
+}
+
+body.dark-mode .footer {
+    background-color: #181a1b;
+    color: #b0b0b0;
+}
+
 .container {
     max-width: 1200px;
     margin: 0 auto;
@@ -720,4 +843,24 @@ section {
         max-width: 200px;
         width: 100%;
     }
+}
+
+/* Dark mode toggle button */
+.dark-mode-toggle {
+    background: none;
+    border: none;
+    color: #007bff;
+    font-size: 1.5rem;
+    cursor: pointer;
+    margin-left: 1.5rem;
+    transition: color 0.3s;
+}
+.dark-mode-toggle:hover {
+    color: #232526;
+}
+body.dark-mode .dark-mode-toggle {
+    color: #66aaff;
+}
+body.dark-mode .dark-mode-toggle:hover {
+    color: #f1f1f1;
 } 

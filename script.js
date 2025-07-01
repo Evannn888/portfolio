@@ -67,14 +67,12 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Scroll-triggered animations
+    // Enhanced scroll-triggered animations
     function handleScrollAnimations() {
-        const elements = document.querySelectorAll('.fade-in, .experience-card, .project-card, .skill-category, .blog-card');
-        
+        const elements = document.querySelectorAll('.fade-in, .fade-in-up, .slide-in-left, .slide-in-right, .experience-card, .project-card, .skill-category, .blog-card, .education-card');
         elements.forEach(element => {
             const elementTop = element.getBoundingClientRect().top;
             const elementVisible = 150;
-            
             if (elementTop < window.innerHeight - elementVisible) {
                 element.classList.add('visible');
             }
@@ -111,24 +109,40 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 500);
     }
 
+    // Typing effect for hero subtitle
+    const heroSubtitle = document.querySelector('.typing-subtitle');
+    if (heroSubtitle) {
+        const subtitleText = heroSubtitle.textContent;
+        heroSubtitle.textContent = '';
+        let i = 0;
+        function typeSubtitle() {
+            if (i < subtitleText.length) {
+                heroSubtitle.textContent += subtitleText.charAt(i);
+                i++;
+                setTimeout(typeSubtitle, 60);
+            }
+        }
+        setTimeout(typeSubtitle, 800);
+    }
+
     // Enhanced hover effects for project cards
     const projectCards = document.querySelectorAll('.project-card');
     projectCards.forEach(card => {
         card.addEventListener('mouseenter', function() {
-            this.style.transform = 'translateY(-10px) scale(1.02)';
+            this.style.transform = 'translateY(-5px)';
         });
         
         card.addEventListener('mouseleave', function() {
-            this.style.transform = 'translateY(0) scale(1)';
+            this.style.transform = 'translateY(0)';
         });
     });
 
-    // Parallax effect for hero section
+    // Simplified parallax effect for hero section
     function handleParallax() {
         const scrolled = window.pageYOffset;
         const hero = document.querySelector('.hero');
-        if (hero) {
-            const rate = scrolled * -0.5;
+        if (hero && scrolled < window.innerHeight) {
+            const rate = scrolled * -0.3;
             hero.style.transform = `translateY(${rate}px)`;
         }
     }
@@ -157,5 +171,32 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
             }
         });
+    });
+});
+
+// Smooth page transitions between sections
+const navLinks2 = document.querySelectorAll('.nav-link');
+navLinks2.forEach(link => {
+    link.addEventListener('click', function(e) {
+        const targetId = this.getAttribute('href');
+        const targetSection = document.querySelector(targetId);
+        if (targetSection) {
+            e.preventDefault();
+            // Fade out all sections
+            const allSections = document.querySelectorAll('section');
+            allSections.forEach(sec => sec.classList.remove('visible', 'fade-section'));
+            // Add fade-section to target
+            targetSection.classList.add('fade-section');
+            setTimeout(() => {
+                targetSection.classList.add('visible');
+                // Scroll after fade in
+                const headerHeight = document.querySelector('.header').offsetHeight;
+                const targetPosition = targetSection.offsetTop - headerHeight;
+                window.scrollTo({ top: targetPosition, behavior: 'smooth' });
+            }, 10);
+            setTimeout(() => {
+                targetSection.classList.remove('fade-section');
+            }, 600);
+        }
     });
 }); 

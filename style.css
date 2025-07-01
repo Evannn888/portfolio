@@ -40,9 +40,6 @@ body.dark-mode .nav-link {
 body.dark-mode .nav-link:hover {
     color: #66aaff;
 }
-body.dark-mode .nav-link::after {
-    background-color: #66aaff;
-}
 
 body.dark-mode .cta-button.primary {
     background-color: #222;
@@ -78,6 +75,18 @@ body.dark-mode .about-stats .stat-item {
 }
 body.dark-mode .stat-label {
     color: #b0b0b0;
+}
+
+body.dark-mode .education {
+    background-color: #181a1b;
+}
+body.dark-mode .education-card {
+    background-color: #232526;
+    border-left: 4px solid #66aaff;
+}
+body.dark-mode .education-icon {
+    background: linear-gradient(135deg, #66aaff, #3a6ea5);
+    color: #181a1b;
 }
 
 body.dark-mode .experience {
@@ -203,25 +212,13 @@ body.dark-mode .hamburger span {
     font-weight: 500;
     transition: color 0.3s ease;
     position: relative;
+    padding: 0.75rem 0;
+    display: block;
+    text-align: center;
 }
 
 .nav-link:hover {
     color: #007bff;
-}
-
-.nav-link::after {
-    content: '';
-    position: absolute;
-    width: 0;
-    height: 2px;
-    bottom: -5px;
-    left: 0;
-    background-color: #007bff;
-    transition: width 0.3s ease;
-}
-
-.nav-link:hover::after {
-    width: 100%;
 }
 
 .hamburger {
@@ -301,6 +298,7 @@ body.dark-mode .hamburger span {
     font-size: 1rem;
     position: relative;
     overflow: hidden;
+    z-index: 1;
 }
 
 .cta-button::before {
@@ -314,6 +312,7 @@ body.dark-mode .hamburger span {
     border-radius: 50%;
     transform: translate(-50%, -50%);
     transition: width 0.6s, height 0.6s;
+    z-index: -1;
 }
 
 .cta-button:hover::before {
@@ -443,6 +442,78 @@ section {
     font-size: 0.9rem;
     color: #6c757d;
     font-weight: 500;
+}
+
+/* Education Section */
+.education {
+    background-color: #ffffff;
+    padding: 5rem 0;
+}
+
+.education-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 2rem;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.education-card {
+    background-color: #f8f9fa;
+    border-radius: 16px;
+    padding: 2rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    border-left: 4px solid #007bff;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    animation: slideInLeft 0.6s ease both;
+}
+
+.education-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+}
+
+.education-header {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.education-icon {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, #007bff, #0056b3);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.5rem;
+}
+
+.education-info h3 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #212529;
+    margin-bottom: 0.5rem;
+}
+
+.education-info p {
+    margin: 0.25rem 0;
+    color: #6c757d;
+    font-size: 0.95rem;
+}
+
+.education-info .gpa {
+    font-weight: 600;
+    color: #007bff;
+}
+
+.education-content p {
+    color: #495057;
+    line-height: 1.7;
+    margin: 0;
 }
 
 /* Experience Section */
@@ -789,6 +860,12 @@ section {
         margin: 0.5rem 0;
     }
 
+    .nav-link {
+        padding: 0.75rem 0;
+        display: block;
+        text-align: center;
+    }
+
     .dark-mode-toggle {
         order: -1;
         margin-right: 1rem;
@@ -836,6 +913,34 @@ section {
     .projects-grid {
         grid-template-columns: 1fr;
         gap: 1.5rem;
+    }
+
+    .education-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .timeline-container::before {
+        left: 30px;
+    }
+
+    .timeline-item {
+        padding-left: 80px !important;
+        padding-right: 0 !important;
+        text-align: left !important;
+    }
+
+    .timeline-marker {
+        left: 30px;
+        transform: translateX(-50%);
+    }
+
+    .timeline-item:hover .timeline-marker {
+        transform: translateX(-50%) scale(1.1);
+    }
+
+    .timeline-content {
+        margin: 0 0 0 2rem !important;
     }
 
     .skills-grid {
@@ -912,6 +1017,8 @@ section {
     justify-content: center;
     width: 40px;
     height: 40px;
+    position: relative;
+    z-index: 10;
 }
 
 .dark-mode-toggle:hover {
@@ -1018,11 +1125,15 @@ body.dark-mode .dark-mode-toggle:hover {
     align-items: center;
     gap: 0.5rem;
     transition: all 0.3s ease;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    background-color: transparent;
 }
 
 .blog-link:hover {
     color: #0056b3;
-    gap: 0.75rem;
+    background-color: rgba(0, 123, 255, 0.1);
+    transform: translateX(5px);
 }
 
 .blog-link i {
@@ -1056,6 +1167,15 @@ body.dark-mode .blog-date {
 
 body.dark-mode .blog-image {
     background: linear-gradient(135deg, #66aaff, #3a6ea5);
+}
+
+body.dark-mode .blog-link {
+    color: #66aaff;
+}
+
+body.dark-mode .blog-link:hover {
+    color: #f1f1f1;
+    background-color: rgba(102, 170, 255, 0.1);
 }
 
 /* Animations and Transitions */
@@ -1159,50 +1279,6 @@ body.dark-mode .blog-image {
 .skill-category:nth-child(2) { animation-delay: 0.2s; }
 .skill-category:nth-child(3) { animation-delay: 0.3s; }
 
-/* Enhanced hover effects */
-.nav-link {
-    position: relative;
-    overflow: hidden;
-}
-
-.nav-link::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(0, 123, 255, 0.1), transparent);
-    transition: left 0.5s;
-}
-
-.nav-link:hover::before {
-    left: 100%;
-}
-
-.cta-button {
-    position: relative;
-    overflow: hidden;
-}
-
-.cta-button::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 0;
-    height: 0;
-    background: rgba(255, 255, 255, 0.2);
-    border-radius: 50%;
-    transform: translate(-50%, -50%);
-    transition: width 0.6s, height 0.6s;
-}
-
-.cta-button:hover::before {
-    width: 300px;
-    height: 300px;
-}
-
 /* Smooth transitions for all interactive elements */
 * {
     transition: color 0.3s ease, background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
@@ -1253,6 +1329,83 @@ body.dark-mode .hero-title {
     border-color: #66aaff;
 }
 
-body.dark-mode .nav-link::before {
-    background: linear-gradient(90deg, transparent, rgba(102, 170, 255, 0.1), transparent);
+/* Remove nav-link shadow/gradient effect */
+/* .nav-link::before and .nav-link:hover::before have been removed for a clean look */
+
+/* Education Section */
+.education-content p {
+    color: #495057;
+    line-height: 1.7;
+    margin: 0;
+}
+
+/* Experience Section */
+body.dark-mode .education-icon {
+    background: linear-gradient(135deg, #66aaff, #3a6ea5);
+    color: #181a1b;
+}
+
+body.dark-mode .experience {
+    background-color: #181a1b;
+}
+
+/* Animations */
+.fade-in-up {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.7s cubic-bezier(.4,0,.2,1), transform 0.7s cubic-bezier(.4,0,.2,1);
+}
+.fade-in-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+.slide-in-left {
+    opacity: 0;
+    transform: translateX(-60px);
+    transition: opacity 0.7s cubic-bezier(.4,0,.2,1), transform 0.7s cubic-bezier(.4,0,.2,1);
+}
+.slide-in-left.visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+.slide-in-right {
+    opacity: 0;
+    transform: translateX(60px);
+    transition: opacity 0.7s cubic-bezier(.4,0,.2,1), transform 0.7s cubic-bezier(.4,0,.2,1);
+}
+.slide-in-right.visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Micro-interactions */
+.cta-button, .project-card, .experience-card, .skill-category {
+    transition: transform 0.2s cubic-bezier(.4,0,.2,1), box-shadow 0.2s cubic-bezier(.4,0,.2,1), background 0.2s;
+}
+.cta-button:hover, .cta-button:focus {
+    transform: scale(1.06);
+    box-shadow: 0 6px 24px rgba(0,123,255,0.15);
+    background: linear-gradient(90deg, #007bff 60%, #0056b3 100%);
+    color: #fff;
+}
+.project-card:hover, .project-card:focus {
+    transform: translateY(-8px) scale(1.03);
+    box-shadow: 0 12px 32px rgba(0,123,255,0.13);
+}
+.experience-card:hover, .experience-card:focus {
+    transform: translateY(-8px) scale(1.03);
+    box-shadow: 0 12px 32px rgba(0,123,255,0.13);
+}
+.skill-category:hover, .skill-category:focus {
+    transform: scale(1.04);
+    box-shadow: 0 8px 24px rgba(0,123,255,0.10);
+}
+
+/* Smooth page transitions */
+section.fade-section {
+    opacity: 0;
+    transition: opacity 0.5s cubic-bezier(.4,0,.2,1);
+}
+section.fade-section.visible {
+    opacity: 1;
 } 
